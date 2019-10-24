@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Application} from './application';
-import { APPLICATIONS } from './mock-applications';
+import {ApplicationService} from '../application.service';
 
 @Component({
   selector: 'app-applications',
@@ -8,12 +8,19 @@ import { APPLICATIONS } from './mock-applications';
   styleUrls: ['./applications.component.css']
 })
 export class ApplicationsComponent implements OnInit {
-  applications = APPLICATIONS;
+  applications: Application[];
   selectedApp: Application;
 
-  constructor() { }
+  constructor(private applicationService: ApplicationService) { }
 
   ngOnInit() {
+    this.getApplications();
+  }
+
+  getApplications(): void {
+    this.applicationService.getApplications()
+      .subscribe(applications => this.applications = applications);
+    // this.applications = this.applicationService.getApplications();
   }
 
   onSelect(app: Application): void {
