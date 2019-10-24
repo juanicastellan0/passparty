@@ -1,6 +1,6 @@
-import { Application } from './application';
+import { Client } from './client';
 
-export const APPLICATIONS: Application[] = [
+export const CLIENTS: Client[] = [
   {id: 11, name: 'Mercadolibre'},
   {id: 12, name: 'Mercadopago'},
   {id: 13, name: 'Amazon'},

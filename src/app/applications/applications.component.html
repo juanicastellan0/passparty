@@ -1,9 +1,0 @@
-<h2>My Applications</h2>
-<ul class="applications">
-  <li *ngFor="let app of applications"
-      [class.selected]="app === selectedApp"
-      (click)="onSelect(app)">
-    <span class="badge">{{app.id}}</span> {{app.name}}
-  </li>
-</ul>
-<app-app-detail [app]="selectedApp"></app-app-detail>

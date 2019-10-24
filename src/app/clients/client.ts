@@ -1,4 +1,4 @@
-export class Application {
+export class Client {
   id: number;
   name: string;
 }
