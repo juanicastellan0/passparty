@@ -12,6 +12,9 @@ import { TokenService } from './token.service';
 })
 export class ClientService {
   private clientsUrl = 'api/clients';  // URL to web api
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(
     private http: HttpClient,
@@ -37,9 +40,17 @@ export class ClientService {
     // return of(CLIENTS.find(hero => hero.id === id));
   }
 
-  /** Log a HeroService message with the MessageService */
-  private log(message: string) {
-    this.tokenService.add(`tokenService: ${message}`);
+  /** PUT: update the client on the server */
+  updateClient(client: Client): Observable<any> {
+    return this.http.put(this.clientsUrl, client, this.httpOptions).pipe(
+      tap(_ => this.log(`updated hero id=${client.id}`)),
+      catchError(this.handleError<any>('updateHero'))
+    );
+  }
+
+  /** Log a ClientService token with the TokenService */
+  private log(token: string) {
+    this.tokenService.add(`tokenService: ${token}`);
   }
 
   /**
