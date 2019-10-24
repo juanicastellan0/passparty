@@ -6,16 +6,20 @@ import { AppComponent } from './app.component';
 import { ClientsComponent } from './clients/clients.component';
 import { ClientDetailComponent } from './app-detail/client-detail.component';
 import { TokensComponent } from './tokens/tokens.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
     ClientDetailComponent,
-    TokensComponent
+    TokensComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule
   ],
   providers: [],
