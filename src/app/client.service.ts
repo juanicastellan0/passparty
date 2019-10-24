@@ -40,6 +40,14 @@ export class ClientService {
     // return of(CLIENTS.find(hero => hero.id === id));
   }
 
+  /** POST: add a new hero to the server */
+  addClient(client: Client): Observable<Client> {
+    return this.http.post<Client>(this.clientsUrl, client, this.httpOptions).pipe(
+      tap((newHero: Client) => this.log(`added client w/ id=${newHero.id}`)),
+      catchError(this.handleError<Client>('addClient'))
+    );
+  }
+
   /** PUT: update the client on the server */
   updateClient(client: Client): Observable<any> {
     return this.http.put(this.clientsUrl, client, this.httpOptions).pipe(

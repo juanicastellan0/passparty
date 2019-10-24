@@ -9,4 +9,13 @@
 <!--    <span class="badge">{{client.id}}</span> {{client.name}}-->
   </li>
 </ul>
+<div>
+  <label>Client name:
+    <input #clientName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(clientName.value); clientName.value=''">
+    Add
+  </button>
+</div>
 <app-tokens></app-tokens>

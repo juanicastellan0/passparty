@@ -22,4 +22,13 @@ export class ClientsComponent implements OnInit {
       .subscribe(clients => this.clients = clients);
     // this.clients = this.clientService.getClients();
   }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.clientService.addClient({ name } as Client)
+      .subscribe(hero => {
+        this.clients.push(hero);
+      });
+  }
 }
