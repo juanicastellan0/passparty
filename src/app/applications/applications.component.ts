@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Application} from './application';
+import { APPLICATIONS } from './mock-applications';
 
 @Component({
   selector: 'app-applications',
@@ -6,13 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./applications.component.css']
 })
 export class ApplicationsComponent implements OnInit {
-  private multinexo: string;
+  applications = APPLICATIONS;
+  selectedApp: Application;
 
-  constructor() {
-    this.multinexo = 'Multinexo';
-  }
+  constructor() { }
 
   ngOnInit() {
   }
 
+  onSelect(app: Application): void {
+    this.selectedApp = app;
+  }
 }
