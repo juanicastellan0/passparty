@@ -12,6 +12,7 @@ import { ClientsComponent } from './clients/clients.component';
 
 import { TokensComponent } from './tokens/tokens.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ClientSearchComponent } from './client-search/client-search.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { AppRoutingModule } from './app-routing.module';
     DashboardComponent,
     ClientsComponent,
     ClientDetailComponent,
-    TokensComponent
+    TokensComponent,
+    ClientSearchComponent
   ],
   providers: [],
   bootstrap: [ AppComponent ]
