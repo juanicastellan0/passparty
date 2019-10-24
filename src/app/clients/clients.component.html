@@ -4,6 +4,7 @@
     <a routerLink="/detail/{{client.id}}">
       <span class="badge">{{client.id}}</span> {{client.name}}
     </a>
+    <button class="delete" title="delete hero" (click)="delete(client)"> X</button>
 <!--      [class.selected]="client === selectedClient"-->
 <!--      (click)="onSelect(client)">-->
 <!--    <span class="badge">{{client.id}}</span> {{client.name}}-->
@@ -14,8 +15,6 @@
     <input #clientName />
   </label>
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(clientName.value); clientName.value=''">
-    Add
-  </button>
+  <button (click)="add(clientName.value); clientName.value=''">Add</button>
 </div>
 <app-tokens></app-tokens>

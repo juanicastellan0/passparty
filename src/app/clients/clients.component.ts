@@ -31,4 +31,9 @@ export class ClientsComponent implements OnInit {
         this.clients.push(hero);
       });
   }
+
+  delete(client: Client): void {
+    this.clients = this.clients.filter(h => h !== client);
+    this.clientService.deleteClient(client).subscribe();
+  }
 }

@@ -40,7 +40,7 @@ export class ClientService {
     // return of(CLIENTS.find(hero => hero.id === id));
   }
 
-  /** POST: add a new hero to the server */
+  /** POST: add a new client to the server */
   addClient(client: Client): Observable<Client> {
     return this.http.post<Client>(this.clientsUrl, client, this.httpOptions).pipe(
       tap((newHero: Client) => this.log(`added client w/ id=${newHero.id}`)),
@@ -53,6 +53,29 @@ export class ClientService {
     return this.http.put(this.clientsUrl, client, this.httpOptions).pipe(
       tap(_ => this.log(`updated hero id=${client.id}`)),
       catchError(this.handleError<any>('updateHero'))
+    );
+  }
+
+  /** DELETE: delete the client from the server */
+  deleteClient(client: Client | number): Observable<Client> {
+    const id = typeof client === 'number' ? client : client.id;
+    const url = `${this.clientsUrl}/${id}`;
+
+    return this.http.delete<Client>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted client  id=${id}`)),
+      catchError(this.handleError<Client>('deleteHero'))
+    );
+  }
+
+  /* GET clients whose name contains search term */
+  searchClients(term: string): Observable<Client[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Client[]>(`${this.clientsUrl}/?name=${term}`).pipe(
+      tap(_ => this.log(`found clients matching "${term}"`)),
+      catchError(this.handleError<Client[]>('searchClients', []))
     );
   }
 
