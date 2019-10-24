@@ -6,13 +6,4 @@
     <span class="badge">{{app.id}}</span> {{app.name}}
   </li>
 </ul>
-
-<div *ngIf="selectedApp">
-  <h2>{{selectedApp.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{selectedApp.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="selectedApp.name" placeholder="name"/>
-    </label>
-  </div>
-</div>
+<app-app-detail [app]="selectedApp"></app-app-detail>
