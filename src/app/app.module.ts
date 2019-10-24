@@ -13,6 +13,8 @@ import { ClientsComponent } from './clients/clients.component';
 import { TokensComponent } from './tokens/tokens.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ClientSearchComponent } from './client-search/client-search.component';
+import { OAuthModule } from 'angular-oauth2-oidc';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   imports: [
@@ -25,6 +27,7 @@ import { ClientSearchComponent } from './client-search/client-search.component';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
+    OAuthModule.forRoot(),
     FormsModule
   ],
   declarations: [
@@ -33,6 +36,7 @@ import { ClientSearchComponent } from './client-search/client-search.component';
     ClientsComponent,
     ClientDetailComponent,
     TokensComponent,
+    HomeComponent,
     ClientSearchComponent
   ],
   providers: [],
