@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Client} from '../clients/client';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { Client } from '../clients/client';
+import { ClientService } from '../client.service';
 
 @Component({
   selector: 'app-client-detail',
@@ -9,9 +13,23 @@ import {Client} from '../clients/client';
 export class ClientDetailComponent implements OnInit {
   @Input() client: Client;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private clientService: ClientService,
+    private location: Location
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getClient();
   }
 
+  getClient(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.clientService.getClient(id)
+      .subscribe(client => this.client = client);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
 }
