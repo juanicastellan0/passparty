@@ -1,0 +1,8 @@
+<div *ngIf="tokenService.tokens.length">
+
+  <h2>Tokens</h2>
+  <button class="clear"
+          (click)="tokenService.clear()">Clear</button>
+  <div *ngFor='let token of tokenService.tokens'> {{token}} </div>
+
+</div>
